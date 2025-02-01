@@ -1,3 +1,4 @@
+// src/hooks/useEmailExtractor.ts
 import { useState, useEffect } from "react";
 import OpenAI from "openai";
 
@@ -7,12 +8,26 @@ const useEmailExtractor = () => {
   const [history, setHistory] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [openai, setOpenai] = useState<OpenAI | null>(null);
 
-  const openai = new OpenAI({
-    baseURL: 'https://api.deepseek.com',
-    apiKey: '',
-    dangerouslyAllowBrowser: true,
-  });
+  useEffect(() => {
+    const fetchApiKey = async () => {
+      try {
+        const response = await fetch("/api.key");
+        const apiKey = await response.text();
+        const openaiInstance = new OpenAI({
+          baseURL: 'https://api.deepseek.com',
+          apiKey: apiKey.trim(),
+          dangerouslyAllowBrowser: true,
+        });
+        setOpenai(openaiInstance);
+      } catch (error) {
+        console.error("Failed to load API key:", error);
+      }
+    };
+
+    fetchApiKey();
+  }, []);
 
   useEffect(() => {
     const savedHistory = localStorage.getItem("emailHistory");
@@ -35,6 +50,11 @@ const useEmailExtractor = () => {
   }, [history]);
 
   const extractEmailInfo = async (text: string): Promise<any | null> => {
+    if (!openai) {
+      setError("API key not loaded. Please try again later.");
+      return null;
+    }
+
     setIsLoading(true);
     setError(null);
 

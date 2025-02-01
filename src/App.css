@@ -130,9 +130,18 @@ body {
   background-color: #c82333;
 }
 
-/* History date */
 .history-date {
   margin-bottom: 10px;
   font-size: 14px;
   color: #666;
+}
+
+/* General info styles */
+.example-mail-item {
+  background-color: #fff;
+  padding: 15px;
+  font-size: 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
 }
