@@ -1,50 +1,34 @@
-# React + TypeScript + Vite
+# Email info extractor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+##### Opis:
 
-Currently, two official plugins are available:
+    Jest to aplikacja, która pozwala na wyciąganie najważniejszych informacji z maili.
+    Skupia się na komunikacji klient-sprzedawca w przemyśle opakowań kartonowych.
+    Jej celem jest zmniejszenie kosztów pracowników tworzących wyceny poprzez
+    dostarczanie informacji w formacie prostym do wprowadzenia do systemów ERP.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##### Wymagania funkcjonalne:
 
-## Expanding the ESLint configuration
+    - Ekstrakcja informacji z maila wraz z jej wyświetleniem
+    - Zapis lokalny historii ekstrakcji
+    - Zarządzanie historią
+    - Obsługa błędów
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+##### Wymagania pozafunkcjonalne:
 
-- Configure the top-level `parserOptions` property like this:
+    - Prostota, nieprzytłaczający design
+    - Strona kodowa sprzyjająca skalowaniu
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+##### Potencjalni odbiorcy:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+    - Sprzedawcy w przemyśle pakowniczym
+    - Logistycy i zarządcy łańcuchami dostaw
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+##### Potencjalne korzyści:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+    - Zmniejszenie nakładu pracy na analizę każdego maila
+    - Krok w przód do automatyzacji systemu wyceny zamówień
+
+##### Stos technologiczny:
+
+    NodeJS + React + TypeScript + Vite
